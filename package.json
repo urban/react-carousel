@@ -22,17 +22,27 @@
   "main": "./lib/react-carousel.js",
   "scripts": {
     "test": "jest",
-    "release": "gulp"
+    "release": "gulp",
+    "dev": "cd ./examples && npm start"
   },
   "jest": {
     "testDirectoryName": "test",
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "testFileExtensions": ["es6", "js", "jsx"],
-    "moduleFileExtensions": ["js", "jsx", "json", "es6"]
+    "testFileExtensions": [
+      "es6",
+      "js",
+      "jsx"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json",
+      "es6"
+    ]
   },
   "dependencies": {
     "babel": "^4.4.5",
-    "react": "^0.12.2"
+    "react": "^0.13.0-rc2"
   },
   "devDependencies": {
     "babel-core": "^4.4.5",
