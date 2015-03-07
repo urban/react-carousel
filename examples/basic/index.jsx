@@ -2,17 +2,27 @@
 
 import React from 'react';
 import Carousel from 'react-carousel';
+import Card from './card';
 import styles from '../global-styles';
 
-var Application = React.createClass({
+const Application = React.createClass({
 
   render() {
+
+    let cards = Array.from(5, n => { return (<Card />); });
+    let style = {
+      ...styles.component,
+      padding: 20
+    };
+
     return (
       <div>
         <fieldset style={styles.fieldset}>
           <legend style={styles.legend}>Default</legend>
 
-          <Carousel style={styles.component} />
+          <Carousel style={style}>
+            {cards}
+          </Carousel>
 
         </fieldset>
       </div>
