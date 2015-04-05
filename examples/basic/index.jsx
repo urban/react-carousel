@@ -2,17 +2,18 @@
 
 import React from 'react';
 import Carousel from 'react-carousel';
-import Card from './card';
+import Card from './Card';
 import styles from '../global-styles';
 
 const Application = React.createClass({
 
   render() {
-
-    let cards = Array.from(5, n => { return (<Card />); });
+    let width = 150;
+    let cards = Array.from(5, n => { return (<Card style={{ width }} />); });
     let style = {
       ...styles.component,
-      padding: 20
+      padding: 20,
+      width: 400
     };
 
     return (

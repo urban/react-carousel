@@ -1,20 +1,4 @@
-'use strict';
-
 import React from 'react';
-
-const nullFunc = function() {};
-const styles = {
-  carousel: {
-    overflow: 'hidden',
-    position: 'relative'
-  },
-  list: {
-
-  },
-  item: {
-    float: 'left'
-  }
-}
 
 export default React.createClass({
 
@@ -39,22 +23,42 @@ export default React.createClass({
       ...style,
       ...styles.carousel
     };
-    let newChildren = children.map((child, i) => {
+
+    let gutterWidth = 20;
+    let totalItemWidth = (children.length - 1) * gutterWidth + style.padding;
+    let newChildren = React.Children.map(children, (child, i) => {
+      totalItemWidth += child.props.style.width || 0;
       return React.cloneElement(child, {
         style: {
           ...child.props.style,
           ...styles.item,
-          marginLeft: i ? 20 : 0
+          marginLeft: i ? gutterWidth : 0
         }
       });
     });
+    console.log(totalItemWidth);
 
     return (
       <div style={carouselStyle} {...other}>
-        <div>
+        <div style={{ width: totalItemWidth, ...styles.list }}>
           {newChildren}
         </div>
       </div>
     );
   }
+});
+
+const nullFunc = function() {};
+
+const StyleSheet = { create: function (e) { return e; } };
+
+let styles = StyleSheet.create({
+  carousel: {
+    overflow: 'auto',
+    position: 'relative'
+  },
+  list: {
+    flexDirection: 'row'
+  },
+  item: {}
 });
